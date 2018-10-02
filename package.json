@@ -1,0 +1,30 @@
+{
+  "name": "play-with-algorithms-js",
+  "version": "0.0.0-rc.0",
+  "private": true,
+  "description": "The JavaScript version of imooc algorithms tutorial",
+  "repository": "https://github.com/Mitscherlich/Play-with-Algorithms-JS.git",
+  "keywords": [
+    "javascript",
+    "algorithms",
+    "tutorial",
+    "imooc"
+  ],
+  "scripts": {
+    "test": "mocha test/*.test.js -t 0 -s 0"
+  },
+  "author": "Mitscherlich Wei <mitscherlich36+github@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Mitscherlich/Play-with-Algorithms-JS/issues"
+  },
+  "devDependencies": {
+    "eslint": "^5.6.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "mocha": "^5.2.0"
+  }
+}
