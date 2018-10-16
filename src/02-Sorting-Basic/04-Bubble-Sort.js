@@ -1,7 +1,5 @@
-const assert = require('assert')
-
-exports.bubbleSort = (array, cb) => {
-  assert(Array.isArray(array), '\'array\' should be an Array!')
+Array.prototype.bubbleSort = function (cb) {
+  const array = this.slice()
   let n = array.length
   let swapped
   do {

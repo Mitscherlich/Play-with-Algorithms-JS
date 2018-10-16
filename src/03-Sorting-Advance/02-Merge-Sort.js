@@ -1,5 +1,8 @@
+const assert = require('assert')
+
 // 将 arr[l...mid] 和 arr[mid+1...r] 两部分进行归并
-const __merge__ = (array, l, mid, r, cb) => {
+function merge (array, l, mid, r, cb) {
+  assert(Array.isArray(array), `'array' should be an Array but got a '${typeof array}'`)
   const aux = new Array(r - l + 1)
   for (let i = l; i <= r; i++) {
     aux[i - l] = array[i]
@@ -20,22 +23,22 @@ const __merge__ = (array, l, mid, r, cb) => {
   }
 }
 
-exports.merge = __merge__
-
 // 递归使用归并排序, 对 arr[l...r] 的范围进行排序
-// eslint-disable-next-line
-const __merge_sort__ = (array, l, r, cb) => {
+function mergeSort (array, l, r, cb) {
   if (l >= r) {
     return
   }
   const mid = Math.floor((l + r) / 2)
-  __merge_sort__(array, l, mid, cb)
-  __merge_sort__(array, mid + 1, r, cb)
-  __merge__(array, l, mid, r, cb)
+  mergeSort(array, l, mid, cb)
+  mergeSort(array, mid + 1, r, cb)
+  merge(array, l, mid, r, cb)
 }
 
-exports.mergeSort = (array, cb) => {
+Array.prototype.mergeSort = function (cb) {
+  const array = this.slice()
   const n = array.length
-  __merge_sort__(array, 0, n - 1, cb)
+  mergeSort(array, 0, n - 1, cb)
   return array
 }
+
+module.exports = { merge }

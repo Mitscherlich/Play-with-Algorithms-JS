@@ -11,45 +11,45 @@ class MaxHeap {
   constructor (array, capacity) {
     if (!Array.isArray(array)) {
       capacity = array
-      this.__count__ = 0
+      this._count = 0
     } else {
       capacity = array.length
     }
-    this.__data__ = new Array(capacity + 1)
+    this._data = new Array(capacity + 1)
     if (Array.isArray(array)) {
       for (let i = 0; i < capacity; i++) {
-        this.__data__[i + 1] = array[i]
+        this._data[i + 1] = array[i]
       }
-      this.__count__ = capacity
+      this._count = capacity
       for (let i = Math.floor(capacity / 2); i >= 1; i--) {
-        shiftDownEnhance(this.__data__, i, capacity)
+        shiftDownEnhance(this._data, i, capacity)
       }
     }
-    this.__capacity__ = capacity
+    this._capacity = capacity
   }
 
   size () {
-    return this.__count__
+    return this._count
   }
 
   isEmpty () {
-    return this.__count__ === 0
+    return this._count === 0
   }
 
   insert (item) {
-    assert(this.__count__ + 1 <= this.__capacity__, 'Not enough capacity!')
-    this.__data__[this.__count__ + 1] = item
-    shiftUpEnhance(this.__data__, this.__count__ + 1)
-    this.__count__++
+    assert(this._count + 1 <= this._capacity, 'Not enough capacity!')
+    this._data[this._count + 1] = item
+    shiftUpEnhance(this._data, this._count + 1)
+    this._count++
   }
 
   extractMax () {
     assert(this.size() > 0)
-    const ret = this.__data__[1]
+    const ret = this._data[1]
     // swap(data[1], data[count])
-    ;[this.__data__[1], this.__data__[this.__count__]] = [this.__data__[this.__count__], this.__data__[1]]
-    this.__count__--
-    shiftDownEnhance(this.__data__, 1, this.__count__)
+    ;[this._data[1], this._data[this._count]] = [this._data[this._count], this._data[1]]
+    this._count--
+    shiftDownEnhance(this._data, 1, this._count)
     return ret
   }
 }
@@ -94,7 +94,7 @@ exports.PrintableMaxHeap = class PrintableMaxHeap extends MaxHeap {
     debug('Data in the max heap: ')
     let line = ''
     for (let i = 1; i < this.size(); i++) {
-      const data = this.__data__[i]
+      const data = this._data[i]
       assert(data >= 0 && data < 100, 'Only handle item ≥ 0 ≤ 100, but got \'' + data + '\'')
       line += data + ' '
     }
@@ -115,7 +115,7 @@ exports.PrintableMaxHeap = class PrintableMaxHeap extends MaxHeap {
       let curLevelNumber = Math.min(this.size() - (2 ** level) + 1, 2 ** level)
       let isLeft = true
       for (let indexCurLevel = 0; indexCurLevel < curLevelNumber; index++, indexCurLevel++) {
-        line1 = putNumberInLine(this.__data__[index], line1, indexCurLevel, curTreeMaxLevelNumber * 3 - 1, isLeft)
+        line1 = putNumberInLine(this._data[index], line1, indexCurLevel, curTreeMaxLevelNumber * 3 - 1, isLeft)
         isLeft = !isLeft
       }
       str += line1 + '\n'

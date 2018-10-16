@@ -1,10 +1,9 @@
-const assert = require('assert')
 const { merge } = require('./02-Merge-Sort')
 
-const { insertSortPartial } = require('../02-Sorting-Basic/03-Insertion-Sort-Enhance')
+require('../02-Sorting-Basic/03-Insertion-Sort-Enhance')
 
-exports.mergeSortReverse = (array, cb) => {
-  assert(Array.isArray(array))
+Array.prototype.mergeSortReverse = function (cb) {
+  const array = this.slice()
   const n = array.length
   for (let sz = 1; sz <= n; sz += sz) {
     for (let i = 0; i + sz < n; i += sz + sz) {
@@ -16,12 +15,12 @@ exports.mergeSortReverse = (array, cb) => {
 }
 
 // Merge Sort Bottom Up 优化
-exports.mergeSortReverseEnhance = (array, cb) => {
-  assert(Array.isArray(array))
+Array.prototype.mergeSortReverseEnhance = function (cb) {
+  const array = this.slice()
   const n = array.length
   // 对于小数组, 使用插入排序优化
   for (let i = 0; i < n; i += 16) {
-    insertSortPartial(array, i, Math.min(i + 15, n - 1), cb)
+    Array.insertSortPartial(array, i, Math.min(i + 15, n - 1), cb)
   }
 
   for (let sz = 16; sz < n; sz += sz) {

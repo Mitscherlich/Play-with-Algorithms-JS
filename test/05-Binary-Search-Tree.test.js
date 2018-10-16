@@ -7,19 +7,20 @@ const {
   it
 } = require('mocha')
 const { binarySearch1, binarySearch2 } = require('../src/05-Binary-Search-Tree/01-Binary-Search')
-const { SIZE, generateNearlyOrderedArray } = require('./utils')
+const { SIZE } = require('./utils')
 const { BinarySearchTree } = require('../src/05-Binary-Search-Tree/02-Binary-Search-Tree-Basics')
 const { SequenceSearchTable } = require('../src/05-Binary-Search-Tree/Opt-Sequence-Search-Table')
 const fs = require('fs')
 const path = require('path')
 
 const FILE_NAME = path.resolve(__dirname, './vendors/bible.txt')
+const HEAVY_TEST = process.env.HEAVY_TEST || false
 
 describe('05-Binary-Search-Tree', () => {
   let array
 
   beforeEach(() => {
-    array = generateNearlyOrderedArray(SIZE * 100, 0)
+    array = Array.generateNearlyOrderedArray(SIZE * 100, 0)
   })
 
   it('01-Binary-Search without recursion', () => {
@@ -76,7 +77,7 @@ describe('05-Binary-Search-Tree', () => {
       })
     })
 
-    describe('with Sequence Table', () => {
+    HEAVY_TEST && describe('with Sequence Table', () => {
       let sst
 
       before(() => {

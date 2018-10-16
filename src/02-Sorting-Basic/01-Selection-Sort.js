@@ -1,7 +1,5 @@
-const assert = require('assert')
-
-exports.selectionSort = (array, cb) => {
-  assert(Array.isArray(array), '\'array\' should be an Array!')
+Array.prototype.selectSort = function (cb) {
+  const array = this.slice()
   const n = array.length
   for (let i = 0; i < n; i++) {
     let minIndex = i

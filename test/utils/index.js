@@ -5,7 +5,7 @@ exports.MIN = 0
 exports.MAX = 100000
 exports.SWAP_TIMES = 100
 
-exports.generateRandomArray = (size, min, max) => {
+Array.generateRandomArray = (size, min, max) => {
   assert(min <= max)
   const array = []
   for (let i = 0; i < size; i++) {
@@ -14,7 +14,7 @@ exports.generateRandomArray = (size, min, max) => {
   return array
 }
 
-exports.generateNearlyOrderedArray = (size, swapTimes) => {
+Array.generateNearlyOrderedArray = (size, swapTimes) => {
   const array = []
   for (let i = 0; i < size; i++) {
     array.push(i)
@@ -29,10 +29,10 @@ exports.generateNearlyOrderedArray = (size, swapTimes) => {
   return array
 }
 
-exports.isSorted = (array, cb) => {
-  const size = array.length
+Array.prototype.isSorted = function (cb) {
+  const size = this.length
   for (let i = 0; i < size - 1; i++) {
-    if (cb(array[i], array[i + 1])) {
+    if (cb(this[i], this[i + 1])) {
       return false
     }
   }

@@ -1,10 +1,9 @@
 const { THRESHOLD } = require('./03-Merge-Sort-Enhance')
-const { insertSortPartial } = require('../02-Sorting-Basic/03-Insertion-Sort-Enhance')
+require('../02-Sorting-Basic/03-Insertion-Sort-Enhance')
 
 // 对 arr[l...r] 部分进行 partition 操作
 // 返回 p, 使得 arr[l...p-1] < arr[p]; arr[p+1...r] > arr[p]
-// eslint-disable-next-line
-const __partition__ = (array, l, r, cb) => {
+function partition (array, l, r, cb) {
   const k = Math.floor(Math.random() * (r - l + 1) + l)
   ;[array[l], array[k]] = [array[k], array[l]]
   const v = array[l]
@@ -19,22 +18,22 @@ const __partition__ = (array, l, r, cb) => {
   return j
 }
 
-exports.partition = __partition__
-
 // 对 arr[l...r] 部分进行快速排序
-// eslint-disable-next-line
-const __quick_sort__ = (array, l, r, cb) => {
+function quickSort (array, l, r, cb) {
   if (r - l <= THRESHOLD) {
-    insertSortPartial(array, l, r, cb)
+    Array.insertSortPartial(array, l, r, cb)
     return
   }
-  const p = __partition__(array, l, r, cb)
-  __quick_sort__(array, l, p - 1, cb)
-  __quick_sort__(array, p + 1, r, cb)
+  const p = partition(array, l, r, cb)
+  quickSort(array, l, p - 1, cb)
+  quickSort(array, p + 1, r, cb)
 }
 
-exports.quickSortWithNOA = (array, cb) => {
+Array.prototype.quickSortWithNOA = function (cb) {
+  const array = this.slice()
   const n = array.length
-  __quick_sort__(array, 0, n - 1, cb)
+  quickSort(array, 0, n - 1, cb)
   return array
 }
+
+module.exports = { partition }

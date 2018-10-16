@@ -1,3 +1,7 @@
 module.exports = {
-  "extends": "standard"
+  'extends': 'semistandard',
+  'rules': {
+    'no-extend-native': 'off',
+    'semi': 'off'
+  }
 };

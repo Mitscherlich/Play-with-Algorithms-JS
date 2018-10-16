@@ -1,10 +1,9 @@
 const { THRESHOLD } = require('./03-Merge-Sort-Enhance')
-const { insertSortPartial } = require('../02-Sorting-Basic/03-Insertion-Sort-Enhance')
+require('../02-Sorting-Basic/03-Insertion-Sort-Enhance')
 
 // 对 arr[l...r] 部分进行 partition 操作
 // 返回 p, 使得 arr[l...p-1] < arr[p]; arr[p+1...r] > arr[p]
-// eslint-disable-next-line
-const __partition__ = (array, l, r, cb) => {
+function partition (array, l, r, cb) {
   const v = array[l]
   let j = l // arr[l+1...j] < v ; arr[j+1...i) > v
   for (let i = l + 1; i <= r; i++) {
@@ -18,36 +17,36 @@ const __partition__ = (array, l, r, cb) => {
 }
 
 // 对 arr[l...r] 部分进行快速排序
-// eslint-disable-next-line
-const __quick_sort__ = (array, l, r, cb) => {
+function quickSort (array, l, r, cb) {
   if (l >= r) {
     return
   }
-  const p = __partition__(array, l, r, cb)
-  __quick_sort__(array, l, p - 1, cb)
-  __quick_sort__(array, p + 1, r, cb)
+  const p = partition(array, l, r, cb)
+  quickSort(array, l, p - 1, cb)
+  quickSort(array, p + 1, r, cb)
 }
 
-exports.quickSort = (array, cb) => {
+Array.prototype.quickSort = function (cb) {
+  const array = this.slice()
   const n = array.length
-  __quick_sort__(array, 0, n - 1, cb)
+  quickSort(array, 0, n - 1, cb)
   return array
 }
 
 // 对 arr[l...r] 部分进行快速排序
-// eslint-disable-next-line
-const __quick_sort_enhance__ = (array, l, r, cb) => {
+function quickSortEnhance (array, l, r, cb) {
   if (r - l <= THRESHOLD) {
-    insertSortPartial(array, l, r, cb)
+    Array.insertSortPartial(array, l, r, cb)
     return
   }
-  const p = __partition__(array, l, r, cb)
-  __quick_sort__(array, l, p - 1, cb)
-  __quick_sort__(array, p + 1, r, cb)
+  const p = partition(array, l, r, cb)
+  quickSort(array, l, p - 1, cb)
+  quickSort(array, p + 1, r, cb)
 }
 
-exports.quickSortEnhance = (array, cb) => {
+Array.prototype.quickSortEnhance = function (cb) {
+  const array = this.slice()
   const n = array.length
-  __quick_sort_enhance__(array, 0, n - 1, cb)
+  quickSortEnhance(array, 0, n - 1, cb)
   return array
 }

@@ -1,14 +1,13 @@
 const { THRESHOLD } = require('./03-Merge-Sort-Enhance')
-const { insertSortPartial } = require('../02-Sorting-Basic/03-Insertion-Sort-Enhance')
+require('../02-Sorting-Basic/03-Insertion-Sort-Enhance')
 
 // 递归的三路快速排序处理 arr[l...r]
 // 将 arr[l...r] 分为 <v; == v; >v 三部分
 // 之后地归对 <v; >v 两部分继续进行三路快排
-// eslint-disable-next-line
-const __quick_sort__ = (array, l, r, cb) => {
+function quickSort (array, l, r, cb) {
   // 对于小规模数组, 使用插入排序进行优化
   if (r - l <= THRESHOLD) {
-    insertSortPartial(array, l, r, cb)
+    Array.insertSortPartial(array, l, r, cb)
     return
   }
   // partition
@@ -34,12 +33,13 @@ const __quick_sort__ = (array, l, r, cb) => {
   }
   [array[l], array[lt]] = [array[lt], array[l]]
 
-  __quick_sort__(array, l, lt - 1, cb)
-  __quick_sort__(array, gt, r, cb)
+  quickSort(array, l, lt - 1, cb)
+  quickSort(array, gt, r, cb)
 }
 
-exports.quickSort3Ways = (array, cb) => {
+Array.prototype.quickSort3Ways = function (cb) {
+  const array = this.slice()
   const n = array.length
-  __quick_sort__(array, 0, n - 1, cb)
+  quickSort(array, 0, n - 1, cb)
   return array
 }

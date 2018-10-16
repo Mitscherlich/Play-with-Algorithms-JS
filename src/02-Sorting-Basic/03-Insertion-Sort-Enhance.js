@@ -1,7 +1,7 @@
 const assert = require('assert')
 
-exports.insertSortEnhance = (array, cb) => {
-  assert(Array.isArray(array), '\'array\' should be an Array!')
+Array.prototype.insertSortEnhance = function (cb) {
+  const array = this.slice()
   const n = array.length
   for (let i = 1; i < n; i++) {
     let e = array[i]
@@ -15,7 +15,7 @@ exports.insertSortEnhance = (array, cb) => {
   return array
 }
 
-exports.insertSortPartial = (array, l, r, cb) => {
+Array.insertSortPartial = (array, l, r, cb) => {
   assert(Array.isArray(array), '\'array\' should be an Array!')
   for (let i = l + 1; i <= r; i++) {
     let e = array[i]

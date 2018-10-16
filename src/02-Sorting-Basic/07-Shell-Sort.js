@@ -1,7 +1,5 @@
-const assert = require('assert')
-
-exports.shellSort = (array, cb) => {
-  assert(Array.isArray(array), '\'array\' should be an Array!')
+Array.prototype.shellSort = function (cb) {
+  const array = this.slice()
   const n = array.length
   // 计算 increment sequence: 1, 4, 13, 40, 121, 364, 1093...
   let h = 1

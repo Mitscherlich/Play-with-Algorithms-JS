@@ -1,8 +1,6 @@
-const assert = require('assert')
-
 // 大概是大部分教材上的实现
-exports.bubbleSortOrigin = (array, cb) => {
-  assert(Array.isArray(array), '\'array\' should be an Array!')
+Array.prototype.bubbleSortOrigin = function (cb) {
+  const array = this.slice()
   const n = array.length
   for (let i = 0; i < n - 1; i++) {
     for (let j = 0; j < n - i - 1; j++) {
