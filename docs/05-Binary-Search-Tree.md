@@ -88,7 +88,7 @@
 
 动画演示：
 
-![BinarySearchTreeInsert](assets/BinarySearchTreeInsert.png)
+![BinarySearchTreeInsert](assets/BinarySearchTreeInsert.gif)
 
 🔗&emsp;代码 [src/05-Binary-Search-Tree/03-Binary-Search-Tree-Insert.js](../src/05-Binary-Search-Tree/03-Binary-Search-Tree-Insert.js)
 
