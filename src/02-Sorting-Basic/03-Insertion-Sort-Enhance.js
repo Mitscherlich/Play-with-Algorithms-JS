@@ -1,5 +1,9 @@
 const assert = require('assert')
 
+/**
+ * 优化插入排序
+ * @param {Function} cb 排序时的回调接口
+ */
 Array.prototype.insertSortEnhance = function (cb) {
   const array = this.slice()
   const n = array.length
@@ -15,6 +19,10 @@ Array.prototype.insertSortEnhance = function (cb) {
   return array
 }
 
+/**
+ * 部分插入排序
+ * @param {Function} cb 排序时的回调接口
+ */
 Array.insertSortPartial = (array, l, r, cb) => {
   assert(Array.isArray(array), '\'array\' should be an Array!')
   for (let i = l + 1; i <= r; i++) {

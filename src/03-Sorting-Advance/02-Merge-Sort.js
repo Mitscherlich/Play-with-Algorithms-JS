@@ -1,6 +1,13 @@
 const assert = require('assert')
 
-// 将 arr[l...mid] 和 arr[mid+1...r] 两部分进行归并
+/**
+ * 将 arr[l...mid] 和 arr[mid+1...r] 两部分进行归并
+ * @param {Array} array 待归并的数组
+ * @param {Number} l 待归并的左端点
+ * @param {Number} mid 左右部分的分界点
+ * @param {Number} r 待归并的右端点
+ * @param {Function} cb 排序时的回调接口
+ */
 function merge (array, l, mid, r, cb) {
   assert(Array.isArray(array), `'array' should be an Array but got a '${typeof array}'`)
   const aux = new Array(r - l + 1)
@@ -23,7 +30,13 @@ function merge (array, l, mid, r, cb) {
   }
 }
 
-// 递归使用归并排序, 对 arr[l...r] 的范围进行排序
+/**
+ * 递归使用归并排序, 对 arr[l...r] 的范围进行排序
+ * @param {Array} array 待排序的数组
+ * @param {Number} l 待排序的左端点
+ * @param {Number} r 待排序的右端点
+ * @param {Function} cb 排序时的回调接口
+ */
 function mergeSort (array, l, r, cb) {
   if (l >= r) {
     return
@@ -34,6 +47,10 @@ function mergeSort (array, l, r, cb) {
   merge(array, l, mid, r, cb)
 }
 
+/**
+ * 归并排序
+ * @param {Function} cb 排序时的回调接口
+ */
 Array.prototype.mergeSort = function (cb) {
   const array = this.slice()
   const n = array.length
@@ -41,4 +58,5 @@ Array.prototype.mergeSort = function (cb) {
   return array
 }
 
+// 对外暴露排序方法
 module.exports = { merge }

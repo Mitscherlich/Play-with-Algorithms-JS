@@ -1,3 +1,7 @@
+/**
+ * 插入排序
+ * @param {Function} cb 排序时的回调接口
+ */
 Array.prototype.insertSort = function (cb) {
   const array = this.slice()
   const n = array.length

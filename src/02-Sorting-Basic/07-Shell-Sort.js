@@ -1,3 +1,7 @@
+/**
+ * 希尔 (shell) 排序
+ * @param {Function} cb 排序时的回调接口
+ */
 Array.prototype.shellSort = function (cb) {
   const array = this.slice()
   const n = array.length

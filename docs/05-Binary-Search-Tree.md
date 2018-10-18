@@ -105,7 +105,11 @@
 
 #### 遍历元素
 
-> TODO
+**前序遍历**: 先访问当前节点，再一次递归访问左右子树；
+**中序遍历**: 先递归访问左子树，再访问自身，在递归访问右子树；
+**后序遍历**: 先递归访问左右子树，再访问自身节点。
+
+![BinarySearchTreeTraverse0](assets/BinarySearchTreeTraverse0.png)
 
 ##### 深度优先遍历
 

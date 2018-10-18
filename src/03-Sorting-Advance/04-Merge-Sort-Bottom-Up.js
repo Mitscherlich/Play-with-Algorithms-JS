@@ -2,6 +2,10 @@ const { merge } = require('./02-Merge-Sort')
 
 require('../02-Sorting-Basic/03-Insertion-Sort-Enhance')
 
+/**
+ * 自底向上的归并排序
+ * @param {Function} cb 排序时的回调接口
+ */
 Array.prototype.mergeSortReverse = function (cb) {
   const array = this.slice()
   const n = array.length
@@ -14,7 +18,10 @@ Array.prototype.mergeSortReverse = function (cb) {
   return array
 }
 
-// Merge Sort Bottom Up 优化
+/**
+ * Merge Sort Bottom Up 优化
+ * @param {Function} cb 排序时的回调接口
+ */
 Array.prototype.mergeSortReverseEnhance = function (cb) {
   const array = this.slice()
   const n = array.length

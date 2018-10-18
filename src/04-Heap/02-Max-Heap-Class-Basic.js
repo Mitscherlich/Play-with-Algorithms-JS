@@ -6,8 +6,15 @@ const { /* shiftUp */ shiftUpEnhance } = require('./03-Shift-Up')
 // eslint-disable-next-line
 const { /* shiftDown */ shiftDownEnhance } = require('./04-Shift-Down')
 
+/**
+ * @class 最大堆
+ */
 class MaxHeap {
-  // 构造函数, 构造一个空堆, 可容纳 capacity 个元素
+  /**
+   * 构造函数, 构造一个空堆, 可容纳 capacity 个元素
+   * @param {Array} array 待成堆的数组
+   * @param {Number} capacity 对的最大容量
+   */
   constructor (array, capacity) {
     if (!Array.isArray(array)) {
       capacity = array
@@ -27,22 +34,34 @@ class MaxHeap {
     }
     this._capacity = capacity
   }
-
+  /**
+   * 获取堆中元素格式
+   * @return {Number} 堆中元素个数
+   */
   size () {
     return this._count
   }
-
+  /**
+   * 判断堆是否为空
+   * @return {Boolean} 堆是否为空
+   */
   isEmpty () {
     return this._count === 0
   }
-
+  /**
+   * 插入元素
+   * @param {*} item 待插入的元素
+   */
   insert (item) {
     assert(this._count + 1 <= this._capacity, 'Not enough capacity!')
     this._data[this._count + 1] = item
     shiftUpEnhance(this._data, this._count + 1)
     this._count++
   }
-
+  /**
+   * 出堆最大的元素
+   * @return {*} 堆中最大的元素
+   */
   extractMax () {
     assert(this.size() > 0)
     const ret = this._data[1]
@@ -54,6 +73,14 @@ class MaxHeap {
   }
 }
 
+/**
+ * TODO
+ * @param {Number} num
+ * @param {String} line
+ * @param {Number} indexCurLevel
+ * @param {Number} curTreeWidth
+ * @param {Boolean} isLeft
+ */
 function putNumberInLine (num, line, indexCurLevel, curTreeWidth, isLeft) {
   let subTreeWidth = Math.floor((curTreeWidth - 1) / 2)
   let offset = indexCurLevel * (curTreeWidth + 1) + subTreeWidth
@@ -70,6 +97,12 @@ function putNumberInLine (num, line, indexCurLevel, curTreeWidth, isLeft) {
   return line
 }
 
+/**
+ * TODO
+ * @param {String} line
+ * @param {Number} indexCurLevel
+ * @param {Number} curTreeWidth
+ */
 function putBranchInLine (line, indexCurLevel, curTreeWidth) {
   let subTreeWidth = Math.floor((curTreeWidth - 1) / 2)
   let subSubTreeWidth = Math.floor((subTreeWidth - 1) / 2)
@@ -82,7 +115,15 @@ function putBranchInLine (line, indexCurLevel, curTreeWidth) {
   return line
 }
 
+/**
+ * @class 可打印的最大堆
+ * @extends MaxHeap
+ */
 exports.PrintableMaxHeap = class PrintableMaxHeap extends MaxHeap {
+  /**
+   * 向字符串转换方法
+   * @override
+   */
   toString () {
     let str = ''
     // 只能打印 100 个元素以内的堆的树状信息

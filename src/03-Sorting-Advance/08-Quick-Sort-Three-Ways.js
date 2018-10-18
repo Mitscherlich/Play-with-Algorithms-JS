@@ -1,9 +1,15 @@
 const { THRESHOLD } = require('./03-Merge-Sort-Enhance')
 require('../02-Sorting-Basic/03-Insertion-Sort-Enhance')
 
-// 递归的三路快速排序处理 arr[l...r]
-// 将 arr[l...r] 分为 <v; == v; >v 三部分
-// 之后地归对 <v; >v 两部分继续进行三路快排
+/**
+ * 递归的三路快速排序处理 arr[l...r]
+ * 将 arr[l...r] 分为 <v; == v; >v 三部分
+ * 之后地归对 <v; >v 两部分继续进行三路快排
+ * @param {Array} array 待排序的数组
+ * @param {Number} l 待排序数组的左端点
+ * @param {Number} r 待排序数组的右端点
+ * @param {Function} cb 排序是的回调接口
+ */
 function quickSort (array, l, r, cb) {
   // 对于小规模数组, 使用插入排序进行优化
   if (r - l <= THRESHOLD) {
@@ -37,6 +43,10 @@ function quickSort (array, l, r, cb) {
   quickSort(array, gt, r, cb)
 }
 
+/**
+ * 三路快速排序
+ * @param {Function} cb 排序时的回调接口
+ */
 Array.prototype.quickSort3Ways = function (cb) {
   const array = this.slice()
   const n = array.length

@@ -1,3 +1,7 @@
+/**
+ * 优化冒泡排序
+ * @param {Function} cb 排序时的回调接口
+ */
 Array.prototype.bubbleSortEnhance = function (cb) {
   const array = this.slice()
   let n = array.length

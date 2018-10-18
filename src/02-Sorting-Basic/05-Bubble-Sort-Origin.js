@@ -1,4 +1,7 @@
-// 大概是大部分教材上的实现
+/**
+ * 冒泡排序：大概是大部分教材上的实现
+ * @param {Function} cb 排序时的回调接口
+ */
 Array.prototype.bubbleSortOrigin = function (cb) {
   const array = this.slice()
   const n = array.length

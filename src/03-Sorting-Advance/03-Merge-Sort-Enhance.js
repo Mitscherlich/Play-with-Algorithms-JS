@@ -4,7 +4,13 @@ const THRESHOLD = 15
 
 const merge = require('./02-Merge-Sort').merge
 
-// 递归使用归并排序, 对 arr[l...r] 的范围进行排序
+/**
+ * 递归使用归并排序, 对 arr[l...r] 的范围进行排序
+ * @param {Array} array 待排序的数组
+ * @param {Number} l 待排序部分的左端点
+ * @param {Number} r 待排序部分的右端点
+ * @param {Function} cb 排序时的回调接口
+ */
 function mergeSort (array, l, r, cb) {
   // 优化 1: 对于小规模数组, 使用插入排序
   if (r - l <= THRESHOLD) {
@@ -21,6 +27,10 @@ function mergeSort (array, l, r, cb) {
   }
 }
 
+/**
+ * 优化归并排序
+ * @param {Function} cb 排序时的回调接口
+ */
 Array.prototype.mergeSortEnhance = function (cb) {
   const array = this.slice()
   const n = array.length
@@ -28,4 +38,5 @@ Array.prototype.mergeSortEnhance = function (cb) {
   return array
 }
 
+// 对外暴露最小数组阈值
 module.exports = { THRESHOLD }

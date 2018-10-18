@@ -1,3 +1,7 @@
+/**
+ * 选择排序
+ * @param {Function} cb 排序时的回调接口
+ */
 Array.prototype.selectSort = function (cb) {
   const array = this.slice()
   const n = array.length

@@ -1,8 +1,14 @@
 const { THRESHOLD } = require('./03-Merge-Sort-Enhance')
 require('../02-Sorting-Basic/03-Insertion-Sort-Enhance')
 
-// 双路快速排序的 partition
-// 返回 p, 使得 arr[l...p-1] < arr[p]; arr[p+1...r] > arr[p]
+/**
+ * 双路快速排序的 partition
+ * @param {Array} array 待划分的数组
+ * @param {Number} l 待划分部分的左端点
+ * @param {Number} r 待划分部分的右端点
+ * @param {Function} cb 排序时的回调接口
+ * @returns {Number} 返回 p, 使得 arr[l...p-1] < arr[p]; arr[p+1...r] > arr[p]
+ */
 function partition (array, l, r, cb) {
   const k = Math.floor(Math.random() * (r - l + 1) + l)
   ;[array[l], array[k]] = [array[k], array[l]]
@@ -34,7 +40,13 @@ function partition (array, l, r, cb) {
   return j
 }
 
-// 对 arr[l...r] 部分进行快速排序
+/**
+ * 对 arr[l...r] 部分进行快速排序
+ * @param {Array} array 待排序的数组
+ * @param {Number} l 待排序数组的左端点
+ * @param {Number} r 待排序数组的右端点
+ * @param {Function} cb 排序时的回调接口
+ */
 function quickSort (array, l, r, cb) {
   if (r - l <= THRESHOLD) {
     Array.insertSortPartial(array, l, r, cb)
@@ -45,6 +57,10 @@ function quickSort (array, l, r, cb) {
   quickSort(array, p + 1, r, cb)
 }
 
+/**
+ * 优化快速排序：对待有大量重复键值的数组
+ * @param {Function} cb 排序时的回调接口
+ */
 Array.prototype.quickSortWithIK = function (cb) {
   const array = this.slice()
   const n = array.length
