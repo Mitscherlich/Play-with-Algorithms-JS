@@ -6,7 +6,7 @@ const {
   describe,
   it
 } = require('mocha')
-const { binarySearch1, binarySearch2 } = require('../src/05-Binary-Search-Tree/01-Binary-Search')
+require('../src/05-Binary-Search-Tree/01-Binary-Search')
 const { SIZE } = require('./utils')
 const { BinarySearchTree } = require('../src/05-Binary-Search-Tree/02-Binary-Search-Tree-Basics')
 const { SequenceSearchTable } = require('../src/05-Binary-Search-Tree/Opt-Sequence-Search-Table')
@@ -25,13 +25,13 @@ describe('05-Binary-Search-Tree', () => {
 
   it('01-Binary-Search without recursion', () => {
     const target = Math.floor(Math.random() * SIZE * 100)
-    const index = binarySearch1(array.slice(), target)
+    const index = array.binarySearch1(target)
     assert.strictEqual(index, target)
   })
 
   it('01-Binary-Search with recursion', () => {
     const target = Math.floor(Math.random() * SIZE * 100)
-    const index = binarySearch2(array.slice(), target)
+    const index = array.binarySearch2(target)
     assert.strictEqual(index, target)
   })
 

@@ -7,8 +7,8 @@ const {
   afterEach
 } = require('mocha')
 const { PrintableMaxHeap } = require('../src/04-Heap/02-Max-Heap-Class-Basic')
-const { heapSort1, heapSort2 } = require('../src/04-Heap/05-Heapify')
-const { heapSort, heapSortEnhance } = require('../src/04-Heap/06-Heap-Sort')
+require('../src/04-Heap/05-Heapify')
+require('../src/04-Heap/06-Heap-Sort')
 const { IndexMaxHeap } = require('../src/04-Heap/08-Index-Heap')
 const { SIZE, MIN, MAX, SWAP_TIMES } = require('./utils')
 
@@ -59,19 +59,19 @@ describe('04-Heap', () => {
     })
 
     it('05-Heapify heapSort1', () => {
-      sorted = heapSort1(array.slice())
+      sorted = array.heapSort1()
     })
 
     it('05-Heapify heapSort2', () => {
-      sorted = heapSort2(array.slice())
+      sorted = array.heapSort2()
     })
 
     it('06-Heap-Sort', () => {
-      sorted = heapSort(array.slice())
+      sorted = array.heapSort()
     })
 
     it('0601-Heap-Sort-Enhance', () => {
-      sorted = heapSortEnhance(array.slice())
+      sorted = array.heapSortEnhance()
     })
 
     afterEach(() => {
@@ -92,19 +92,19 @@ describe('04-Heap', () => {
     })
 
     it('05-Heapify heapSort1', () => {
-      sorted = heapSort1(array.slice())
+      sorted = array.heapSort1()
     })
 
     it('05-Heapify heapSort2', () => {
-      sorted = heapSort2(array.slice())
+      sorted = array.heapSort2()
     })
 
     it('06-Heap-Sort', () => {
-      sorted = heapSort(array.slice())
+      sorted = array.heapSort()
     })
 
     it('0601-Heap-Sort-Enhance', () => {
-      sorted = heapSortEnhance(array.slice())
+      sorted = array.heapSortEnhance()
     })
 
     afterEach(() => {
@@ -123,19 +123,19 @@ describe('04-Heap', () => {
     })
 
     it('05-Heapify heapSort1', () => {
-      sorted = heapSort1(array.slice())
+      sorted = array.heapSort1()
     })
 
     it('05-Heapify heapSort2', () => {
-      sorted = heapSort2(array.slice())
+      sorted = array.heapSort2()
     })
 
     it('06-Heap-Sort', () => {
-      sorted = heapSort(array.slice())
+      sorted = array.heapSort()
     })
 
     it('0601-Heap-Sort-Enhance', () => {
-      sorted = heapSortEnhance(array.slice())
+      sorted = array.heapSortEnhance()
     })
 
     afterEach(() => {

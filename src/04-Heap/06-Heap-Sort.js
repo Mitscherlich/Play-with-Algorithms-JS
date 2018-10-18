@@ -1,6 +1,9 @@
-const assert = require('assert')
-
-// 原始的 shiftDown 过程
+/**
+ * 原始的 shift down 过程
+ * @param {Array} array 待排序的数组
+ * @param {Number} n 元素个数
+ * @param {Number} k 待 shift down 的元素位置
+ */
 const shiftDown = (array, n, k) => {
   while (2 * k + 1 < n) {
     let j = 2 * k + 1
@@ -18,8 +21,13 @@ const shiftDown = (array, n, k) => {
   }
 }
 
-// 优化的 shiftDown 过程, 使用赋值的方式取代不断的 swap,
-// 该优化思想和我们之前对插入排序进行优化的思路是一致的
+/**
+ * 优化的 shiftDown 过程, 使用赋值的方式取代不断的 swap,
+ * 该优化思想和我们之前对插入排序进行优化的思路是一致的
+ * @param {Array} array 待排序的数组
+ * @param {Number} n 元素个数
+ * @param {Number} k 待 shift down 的元素位置
+ */
 const shiftDownEnhance = (array, n, k) => {
   const e = array[k]
   while (2 * k + 1 < n) {
@@ -39,9 +47,11 @@ const shiftDownEnhance = (array, n, k) => {
   array[k] = e
 }
 
-// 不使用一个额外的最大堆, 直接在原数组上进行原地的堆排序
-exports.heapSort = array => {
-  assert(Array.isArray(array))
+/**
+ * 不使用一个额外的最大堆, 直接在原数组上进行原地的堆排序
+ */
+Array.prototype.heapSort = function () {
+  const array = this.slice()
   const n = array.length
   // heapify
   // 注意，此时我们的堆是从 0 开始索引的
@@ -59,9 +69,11 @@ exports.heapSort = array => {
   return array
 }
 
-// 优化的堆排序
-exports.heapSortEnhance = array => {
-  assert(Array.isArray(array))
+/**
+ * 优化的堆排序
+ */
+Array.prototype.heapSortEnhance = function () {
+  const array = this.slice()
   const n = array.length
   for (let i = Math.floor((n - 1) / 2); i >= 0; i--) {
     shiftDownEnhance(array, n, i)
