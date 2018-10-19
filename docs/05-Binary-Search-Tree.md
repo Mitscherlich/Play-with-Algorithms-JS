@@ -105,44 +105,64 @@
 
 #### 遍历元素
 
+![BinarySearchTreeTraverse0](assets/BinarySearchTreeTraverse0.png)
+
+> 遍历示意图
+
+##### 深度优先遍历
+
+深度优先遍历通常分为以下三种：
+
 **前序遍历**: 先访问当前节点，再一次递归访问左右子树；
 **中序遍历**: 先递归访问左子树，再访问自身，在递归访问右子树；
 **后序遍历**: 先递归访问左右子树，再访问自身节点。
 
-![BinarySearchTreeTraverse0](assets/BinarySearchTreeTraverse0.png)
-
-##### 深度优先遍历
-
-> TODO
-
 ###### 前序遍历
 
-> TODO
+动画演示：
+
+![PreOrderTravse](assets/PreOrderTravse.gif)
+
+🔗&emsp;代码 [src/05-Binary-Search-Tree/05-Binary-Search-Tree-Traverse.js](../src/05-Binary-Search-Tree/05-Binary-Search-Tree-Traverse.js)
 
 ###### 中序遍历
 
-> TODO
+动画演示：
+
+![InOrderTravse](assets/InOrderTravse.gif)
+
+🔗&emsp;代码 [src/05-Binary-Search-Tree/05-Binary-Search-Tree-Traverse.js](../src/05-Binary-Search-Tree/05-Binary-Search-Tree-Traverse.js)
 
 ###### 后序遍历
 
-> TODO
+动画演示：
+
+![PostOrderTravse](assets/PostOrderTravse.gif)
+
+🔗&emsp;代码 [src/05-Binary-Search-Tree/05-Binary-Search-Tree-Traverse.js](../src/05-Binary-Search-Tree/05-Binary-Search-Tree-Traverse.js)
 
 ##### 广度优先遍历
 
-> TODO
+广度优先遍历以层序遍历为例：
 
 ###### 层序遍历
 
-> TODO
+动画演示：
+
+![LevelOrderTravse](assets/LevelOrderTravse.gif)
+
+🔗&emsp;代码 [src/05-Binary-Search-Tree/02-Binary-Search-Tree-Basics.js](../src/05-Binary-Search-Tree/02-Binary-Search-Tree-Basics.js)
 
 #### 删除元素
 
-> TODO
+删除一个元素相对复杂，分为特殊和一般两种情况讨论
 
 ##### 最小值和最大值
 
-> TODO
+🔗&emsp;代码 [src/05-Binary-Search-Tree/07-Binary-Search-Tree-Remove-Min-and-Max.js](../src/05-Binary-Search-Tree/07-Binary-Search-Tree-Remove-Min-and-Max.js)
 
 ##### 任意元素
 
-> TODO
+> **1962** Hibbard - Hubbard Deletion
+
+🔗&emsp;代码 [src/05-Binary-Search-Tree/02-Binary-Search-Tree-Basics.js](../src/05-Binary-Search-Tree/02-Binary-Search-Tree-Basics.js)
