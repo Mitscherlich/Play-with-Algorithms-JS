@@ -4,4 +4,4 @@ module.exports = {
     'no-extend-native': 'off',
     'semi': 'off'
   }
-};
+}
